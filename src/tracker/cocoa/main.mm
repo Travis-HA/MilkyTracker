@@ -32,6 +32,7 @@
 #import <XModule.h>
 #import <WAVExporter.h>
 #import <CLIParser.h>
+#import "Playlist.h"
 #import "AppDelegate.h"
 
 // ----------------------------------------------------------
@@ -65,8 +66,9 @@ void QueryKeyModifiers() { }
 int main(int argc, const char * argv[])
 {
 	static CLIParser parser(argc, argv);
-	parser.addPositionalArg("input", "Input module file (.xm)", false);
-	parser.addOption("-headless", false, "Run in headless mode");
+        parser.addPositionalArg("input", "Input module file (.xm)", false);
+        parser.addOption("-headless", false, "Run in headless mode");
+        parser.addOption("-playlist", true, "Path to playlist file");
 
 	auto exporter = WAVExporter::createFromParser(parser);
 
@@ -76,8 +78,16 @@ int main(int argc, const char * argv[])
 		return 1;
 	}
 
-	const char* inputFile = parser.getPositionalArg(0);
-	const char* outputWAVFile = parser.getOptionValue("-output");
+        const char* inputFile = parser.getPositionalArg(0);
+        const char* outputWAVFile = parser.getOptionValue("-output");
+        const char* playlistFile = parser.getOptionValue("-playlist");
+        Playlist playlist;
+        if (playlistFile) {
+                if (playlist.loadFromFile(playlistFile) && playlist.size() > 0) {
+                        parser.setPositionalArgValue(0, playlist.current().c_str());
+                        inputFile = parser.getPositionalArg(0);
+                }
+        }
 
 	if (inputFile && outputWAVFile) {
 		if (exporter->hasArgumentError()) {

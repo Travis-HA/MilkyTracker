@@ -152,6 +152,7 @@ add_executable(tracker
     TrackerUpdate.cpp
     Undo.cpp
     VRand.cpp
+    Playlist.cpp
     Zapper.cpp
 
     # Headers
@@ -240,6 +241,7 @@ add_executable(tracker
     TrackerSettingsDatabase.h
     Undo.h
     VRand.h
+    Playlist.h
     Zapper.h
 )
 
