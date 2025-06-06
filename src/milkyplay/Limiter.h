@@ -183,12 +183,6 @@ struct Limiter : public Mixable
       buffer_pos++;
 
     }
-    buffer_pos = buffer_pos;
-    peak = peak;
-    atten = atten;
-    atten_lp = atten_lp;
-    chunk_pos = chunk_pos;
-    chunk_num = chunk_num;
     //*(plugin_data->attenuation) = -CO_DB(atten);
     //*(plugin_data->latency) = delay;
   }
