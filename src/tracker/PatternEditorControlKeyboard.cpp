@@ -1766,7 +1766,7 @@ void PatternEditorControl::updateStatus()
 					patternTools.convertEffectsToFT2(eff, op);
 					if( eff != 0 ){
 						patternTools.getEffectName( fxchar, eff);
-						patternTools.getEffectDescription(label, fxchar[0] );
+                                                patternTools.getEffectDescription(label, sizeof(label), fxchar[0] );
 						status = PPString(fxchar);
 						status.append(" = ");
 						status.append(label);

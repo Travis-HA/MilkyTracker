@@ -85,7 +85,7 @@ public:
 	static pp_uint32 normalizeVol(pp_uint32 volume);
 
 	static pp_uint8 getNibble(pp_int32 op, PatternEditor::NibbleTypes type);
-	static void getEffectDescription(char* label, char fxchar);
+        static void getEffectDescription(char* label, size_t labelSize, char fxchar);
 };
 
 #endif

@@ -831,31 +831,31 @@ pp_uint8 PatternTools::getNibble(pp_int32 op, PatternEditor::NibbleTypes type)
    return value;
 }
 
-void PatternTools::getEffectDescription(char* label, char fxchar){
-	switch( fxchar ){
-		case '0': snprintf(label, sizeof(label),"arp"); break; 
-		case '1': snprintf(label, sizeof(label),"portup"); break; 
-		case '2': snprintf(label, sizeof(label),"portdown"); break; 
-		case '3': snprintf(label, sizeof(label),"portnote"); break; 
-		case '4': snprintf(label, sizeof(label),"vibrato"); break; 
-		case '5': snprintf(label, sizeof(label),"portafade"); break; 
-		case '6': snprintf(label, sizeof(label),"vibrafade"); break; 
-		case '7': snprintf(label, sizeof(label),"tremolo"); break; 
-		case '8': snprintf(label, sizeof(label),"pan"); break; 
-		case '9': snprintf(label, sizeof(label),"smpstart"); break; 
-		case 'A': snprintf(label, sizeof(label),"volfade"); break; 
-		case 'B': snprintf(label, sizeof(label),"jump"); break; 
-		case 'C': snprintf(label, sizeof(label),"vol"); break; 
-		case 'D': snprintf(label, sizeof(label),"break"); break; 
-		case 'E': snprintf(label, sizeof(label),"subcmd"); break; 
-		case 'F': snprintf(label, sizeof(label),"bpm"); break; 
-		case 'G': snprintf(label, sizeof(label),"gvol"); break; 
-		case 'H': snprintf(label, sizeof(label),"gfade"); break; 
-		case 'K': snprintf(label, sizeof(label),"keyoff"); break; 
-		case 'L': snprintf(label, sizeof(label),"envpos"); break; 
-		case 'P': snprintf(label, sizeof(label),"panslide"); break; 
-		case 'R': snprintf(label, sizeof(label),"retrigfade"); break; 
-		case 'T': snprintf(label, sizeof(label),"tremor"); break; 
-		case 'X': snprintf(label, sizeof(label),"fineporta"); break; 
-	}
+void PatternTools::getEffectDescription(char* label, size_t labelSize, char fxchar){
+        switch( fxchar ){
+                case '0': snprintf(label, labelSize,"arp"); break;
+                case '1': snprintf(label, labelSize,"portup"); break;
+                case '2': snprintf(label, labelSize,"portdown"); break;
+                case '3': snprintf(label, labelSize,"portnote"); break;
+                case '4': snprintf(label, labelSize,"vibrato"); break;
+                case '5': snprintf(label, labelSize,"portafade"); break;
+                case '6': snprintf(label, labelSize,"vibrafade"); break;
+                case '7': snprintf(label, labelSize,"tremolo"); break;
+                case '8': snprintf(label, labelSize,"pan"); break;
+                case '9': snprintf(label, labelSize,"smpstart"); break;
+                case 'A': snprintf(label, labelSize,"volfade"); break;
+                case 'B': snprintf(label, labelSize,"jump"); break;
+                case 'C': snprintf(label, labelSize,"vol"); break;
+                case 'D': snprintf(label, labelSize,"break"); break;
+                case 'E': snprintf(label, labelSize,"subcmd"); break;
+                case 'F': snprintf(label, labelSize,"bpm"); break;
+                case 'G': snprintf(label, labelSize,"gvol"); break;
+                case 'H': snprintf(label, labelSize,"gfade"); break;
+                case 'K': snprintf(label, labelSize,"keyoff"); break;
+                case 'L': snprintf(label, labelSize,"envpos"); break;
+                case 'P': snprintf(label, labelSize,"panslide"); break;
+                case 'R': snprintf(label, labelSize,"retrigfade"); break;
+                case 'T': snprintf(label, labelSize,"tremor"); break;
+                case 'X': snprintf(label, labelSize,"fineporta"); break;
+        }
 }
