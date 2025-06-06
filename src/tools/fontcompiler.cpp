@@ -447,7 +447,7 @@ int main(int argc, const char* argv[])
 						dst = src;
 				
 					char hexStr[100];
-					sprintf(hexStr, "\\x%x", dst);
+					snprintf(hexStr, sizeof(hexStr), "\\x%x", dst);
 				
 					if (i == size - 1)
 						f << hexStr << '"' << endl;

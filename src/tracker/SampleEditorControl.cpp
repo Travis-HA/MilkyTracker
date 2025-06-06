@@ -555,9 +555,9 @@ void SampleEditorControl::paint(PPGraphicsAbstract* g)
 	char buffer[32];
 	
 	if (offsetFormat == OffsetFormatHex)
-		sprintf(buffer, "%x", (mp_sint32)ceil(startPos*xScale));
+		snprintf(buffer, sizeof(buffer), "%x", (mp_sint32)ceil(startPos*xScale));
 	else if (offsetFormat == OffsetFormatDec)
-		sprintf(buffer, "%d", (mp_sint32)ceil(startPos*xScale));
+		snprintf(buffer, sizeof(buffer), "%d", (mp_sint32)ceil(startPos*xScale));
 	else if (offsetFormat == OffsetFormatMillis)
 	{
 		pp_uint32 millis = sampleEditor->convertSmpPosToMillis((mp_sint32)ceil(startPos*xScale), relativeNote);
@@ -579,9 +579,9 @@ void SampleEditorControl::paint(PPGraphicsAbstract* g)
 	if (currentPosition.x >= 0 && currentPosition.y >= 0)
 	{
 		if (offsetFormat == OffsetFormatHex)
-			sprintf(buffer, "%x / %x", positionToSample(currentPosition), end);
+			snprintf(buffer, sizeof(buffer), "%x / %x", positionToSample(currentPosition), end);
 		else if (offsetFormat == OffsetFormatDec)
-			sprintf(buffer, "%d / %d", positionToSample(currentPosition), end);
+			snprintf(buffer, sizeof(buffer), "%d / %d", positionToSample(currentPosition), end);
 		else if (offsetFormat == OffsetFormatMillis)
 		{
 			pp_uint32 millis = sampleEditor->convertSmpPosToMillis(positionToSample(currentPosition), relativeNote);
@@ -592,9 +592,9 @@ void SampleEditorControl::paint(PPGraphicsAbstract* g)
 	else
 	{
 		if (offsetFormat == OffsetFormatHex)
-			sprintf(buffer, "%x", end);
+			snprintf(buffer, sizeof(buffer), "%x", end);
 		else if (offsetFormat == OffsetFormatDec)
-			sprintf(buffer, "%d", end);
+			snprintf(buffer, sizeof(buffer), "%d", end);
 		else if (offsetFormat == OffsetFormatMillis)
 		{
 			pp_uint32 totalMillis = sampleEditor->convertSmpPosToMillis(end, relativeNote);
@@ -636,7 +636,7 @@ void SampleEditorControl::paint(PPGraphicsAbstract* g)
 				g->setPixel(offsetMarkerX, j + location.y);
 
 			// Draw value for 9xx command
-			sprintf(buffer, "Offset: %02x", currentOffset >> 8);
+			snprintf(buffer, sizeof(buffer), "Offset: %02x", currentOffset >> 8);
 
 			g->setColor(0, 0, 0);
 			g->drawString(buffer, location.x + 3 + visibleWidth - font->getStrWidth(buffer), location.y + font->getCharHeight() * 2 - 1);

@@ -58,7 +58,7 @@ void PPDictionaryKey::store(const pp_uint32 value)
 {
 	char buffer[100];
 	
-	sprintf(buffer,"%i",value);
+	snprintf(buffer, sizeof(buffer),"%i",value);
 	
 	this->value = buffer;
 }

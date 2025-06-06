@@ -84,7 +84,7 @@ void DialogSliders::initSlider(int i, float min, float max, float value, PPStrin
 	getMessageBoxContainer()->addControl(staticText);
 	// value
 	char v[255];
-	sprintf(v,"%i",(int)value);
+	snprintf(v, sizeof(v),"%i",(int)value);
 	//staticText = new PPStaticText(MESSAGEBOX_CONTROL_USER1+TEXTVALUES_OFFSET+i, screen, this, PPPoint(x+width-(4*12), y2), v, true);
 	//staticText->setFont(font);
 	//getMessageBoxContainer()->addControl(staticText);
@@ -118,7 +118,7 @@ pp_int32 DialogSliders::handleEvent(PPObject* sender, PPEvent* event)
   if( id >= MESSAGEBOX_CONTROL_USER1 && id <= MESSAGEBOX_CONTROL_USER1+numSliders ){
     pp_uint32 slider = id-MESSAGEBOX_CONTROL_USER1;
     float val = getSlider( slider );
-    sprintf(v,"%i",(int)val);
+    snprintf(v, sizeof(v),"%i",(int)val);
     listBoxes[slider]->updateItem( 0, PPString(v) );
     listBoxes[slider]->commitChanges();
     needUpdate = true;

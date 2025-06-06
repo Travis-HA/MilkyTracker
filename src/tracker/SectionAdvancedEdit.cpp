@@ -198,9 +198,9 @@ pp_int32 SectionAdvancedEdit::handleEvent(PPObject* sender, PPEvent* event)
 				}	
 
 				if (res)
-					sprintf(buffer, "%i commands have been converted", res);
+					snprintf(buffer, sizeof(buffer), "%i commands have been converted", res);
 				else
-					sprintf(buffer, "Nothing to do");
+					snprintf(buffer, sizeof(buffer), "Nothing to do");
 				
 				tracker.showMessageBox(MESSAGEBOX_UNIVERSAL, buffer, Tracker::MessageBox_OK);
 
@@ -221,9 +221,9 @@ pp_int32 SectionAdvancedEdit::handleEvent(PPObject* sender, PPEvent* event)
 				}	
 
 				if (res)
-					sprintf(buffer, "%i commands have been erased", res);
+					snprintf(buffer, sizeof(buffer), "%i commands have been erased", res);
 				else
-					sprintf(buffer, "Nothing to do");
+					snprintf(buffer, sizeof(buffer), "Nothing to do");
 				
 				tracker.showMessageBox(MESSAGEBOX_UNIVERSAL, buffer, Tracker::MessageBox_OK);
 	
@@ -414,7 +414,7 @@ void SectionAdvancedEdit::update(bool repaint/* = true*/)
 	
 	PPStaticText* text = static_cast<PPStaticText*>(container->getControlByID(ADVEDIT_TEXT_SPLITTRACK));
 
-	sprintf(buffer, "Use subsequent %02i channels", splitTrackNumSubsequentChannels);
+	snprintf(buffer, sizeof(buffer), "Use subsequent %02i channels", splitTrackNumSubsequentChannels);
 	
 	text->setText(buffer);
 

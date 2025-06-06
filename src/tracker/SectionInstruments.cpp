@@ -413,8 +413,8 @@ pp_int32 SectionInstruments::handleEvent(PPObject* sender, PPEvent* event)
 				if (event->getID() != eCommand)
 					break;
 
-				sprintf(buffer, "Copy ins. %x to %x", tracker.listBoxInstruments->getSelectedIndex()+1, 1);
-				sprintf(buffer2, "Copy smp. %x to %x", tracker.listBoxSamples->getSelectedIndex(), 0);
+				snprintf(buffer, sizeof(buffer), "Copy ins. %x to %x", tracker.listBoxInstruments->getSelectedIndex()+1, 1);
+				snprintf(buffer2, sizeof(buffer2), "Copy smp. %x to %x", tracker.listBoxSamples->getSelectedIndex(), 0);
 
 				tracker.initInstrumentChooser(INSTRUMENT_CHOOSER_COPY, "Copy ins", "Copy smp", "Copy instrument/sample" PPSTR_PERIODS, 
 											  buffer, buffer2, 
@@ -431,8 +431,8 @@ pp_int32 SectionInstruments::handleEvent(PPObject* sender, PPEvent* event)
 				if (event->getID() != eCommand)
 					break;
 
-				sprintf(buffer, "Swap ins. %x with %x", tracker.listBoxInstruments->getSelectedIndex()+1, 1);
-				sprintf(buffer2, "Swap smp. %x with %x", tracker.listBoxSamples->getSelectedIndex(), 0);
+				snprintf(buffer, sizeof(buffer), "Swap ins. %x with %x", tracker.listBoxInstruments->getSelectedIndex()+1, 1);
+				snprintf(buffer2, sizeof(buffer2), "Swap smp. %x with %x", tracker.listBoxSamples->getSelectedIndex(), 0);
 
 				tracker.initInstrumentChooser(INSTRUMENT_CHOOSER_SWAP, "Swap ins", "Swap smp", "Swap instrument/sample" PPSTR_PERIODS, 
 											  buffer, buffer2, 
@@ -1492,9 +1492,9 @@ void SectionInstruments::update(bool repaint)
 
 #ifndef __LOWRES__ 
 	if (sampleEditor->getRelNoteNum() > 0)
-		sprintf(noteName,"    (+%i)",(pp_int32)sampleEditor->getRelNoteNum());
+		snprintf(noteName, sizeof(noteName),"    (+%i)",(pp_int32)sampleEditor->getRelNoteNum());
 	else
-		sprintf(noteName,"    (%i)",(pp_int32)sampleEditor->getRelNoteNum());
+		snprintf(noteName, sizeof(noteName),"    (%i)",(pp_int32)sampleEditor->getRelNoteNum());
 	PatternTools::getNoteName(noteName, sampleEditor->getRelNoteNum() + 4*12 + 1, false);
 #else
 	PatternTools::getNoteName(noteName, sampleEditor->getRelNoteNum() + 4*12 + 1);

@@ -434,7 +434,7 @@ void SectionHDRecorder::init(pp_int32 px, pp_int32 py)
 	for (pp_int32 j = 0; j < TrackerConfig::numMixFrequencies; j++)
 	{
 		char buffer[32];
-		sprintf(buffer, "%i Hz", TrackerConfig::mixFrequencies[j]);
+		snprintf(buffer, sizeof(buffer), "%i Hz", TrackerConfig::mixFrequencies[j]);
 		radioGroup->addItem(buffer);
 	}
 
@@ -649,7 +649,7 @@ void SectionHDRecorder::update(bool repaint/* = true*/)
 	PPSlider* slider = static_cast<PPSlider*>(container->getControlByID(HDRECORD_SLIDER_MIXERVOLUME));
 	ASSERT(slider);
 
-	sprintf(buffer, "%i%%", (mixerVolume*100)/256);
+	snprintf(buffer, sizeof(buffer), "%i%%", (mixerVolume*100)/256);
 
 	if (strlen(buffer) < 4)
 	{
@@ -705,11 +705,11 @@ void SectionHDRecorder::update(bool repaint/* = true*/)
 		staticText = static_cast<PPStaticText*>(container->getControlByID(HDRECORD_STATICTEXT_SAVETOFILENAME));
 		staticText->show(false);
 
-		sprintf(buffer, "Ins:%x", insIndex+1);
+		snprintf(buffer, sizeof(buffer), "Ins:%x", insIndex+1);
 		staticText = static_cast<PPStaticText*>(container->getControlByID(HDRECORD_STATICTEXT_INS));
 		staticText->setText(buffer);
 
-		sprintf(buffer, "Smp:%x", smpIndex);
+		snprintf(buffer, sizeof(buffer), "Smp:%x", smpIndex);
 		staticText = static_cast<PPStaticText*>(container->getControlByID(HDRECORD_STATICTEXT_SMP));
 		staticText->setText(buffer);
 		
@@ -808,7 +808,7 @@ void SectionHDRecorder::exportWAVAsFileName(const PPSystemString& fileName)
 	{
 		pp_int32 seconds = (pp_int32)((float)res / (float)getSettingsFrequency());
 		char buffer[200];
-		sprintf(buffer, "%i:%02i successfully recorded", seconds/60, seconds%60);
+		snprintf(buffer, sizeof(buffer), "%i:%02i successfully recorded", seconds/60, seconds%60);
 		tracker.showMessageBox(MESSAGEBOX_UNIVERSAL, buffer, Tracker::MessageBox_OK);
 	}
 	else

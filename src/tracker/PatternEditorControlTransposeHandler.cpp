@@ -40,7 +40,7 @@ void PatternEditorControl::showNoteTransposeWarningMessageBox(pp_int32 fuckups)
 	}
 	
 	char buffer[100];
-	sprintf(buffer, "%i notes will be erased, continue?", fuckups);
+	snprintf(buffer, sizeof(buffer), "%i notes will be erased, continue?", fuckups);
 	
 	dialog = new PPDialogBase(parentScreen, transposeHandlerResponder, PP_DEFAULT_ID, buffer);
 	dialog->show();

@@ -99,7 +99,7 @@ DialogHelp::DialogHelp(PPScreen *screen,
 	// uncomment to display all characters
 	//for( c = 0; c <128; c++ ){
 	//  char msg[255];
-	//  sprintf(msg,"d=%d x=%x %c\n",c,c,c);
+	//  snprintf(msg, sizeof(msg),"d=%d x=%x %c\n",c,c,c);
 	//  listBox->addItem( msg );
 	//  
 	//}

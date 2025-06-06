@@ -314,14 +314,14 @@ void DialogWithValues::fitListBox(pp_int32 id, float valueOneRangeStart, float v
 	char buffer1[100];
 	char buffer2[100];
 
-	sprintf(buffer1, "%%.%if", numDecimals);
+	snprintf(buffer1, sizeof(buffer1), "%%.%if", numDecimals);
 
 	PPListBox* listBox = static_cast<PPListBox*>(messageBoxContainerGeneric->getControlByID(id));
 	if (listBox)
 	{
-		sprintf(buffer2, buffer1, valueOneRangeStart);
+		snprintf(buffer2, sizeof(buffer2), buffer1, valueOneRangeStart);
 		pp_int32 len = (pp_int32)strlen(buffer2);
-		sprintf(buffer2, buffer1,  valueOneRangeEnd);
+		snprintf(buffer2, sizeof(buffer2), buffer1,  valueOneRangeEnd);
 		if ((pp_int32)strlen(buffer2) > len) len = (pp_int32)strlen(buffer2);
 		
 		pp_int32 y2 = listBox->getLocation().y;
@@ -355,12 +355,12 @@ void DialogWithValues::updateListBox(pp_int32 id, float val, pp_int32 numDecimal
 	char buffer1[100];
 	char buffer2[100];
 
-	sprintf(buffer1, "%%.%if", numDecimals);
+	snprintf(buffer1, sizeof(buffer1), "%%.%if", numDecimals);
 
 	PPListBox* listBox = static_cast<PPListBox*>(messageBoxContainerGeneric->getControlByID(id));
 	if (listBox)
 	{
-		sprintf(buffer2, buffer1, val);
+		snprintf(buffer2, sizeof(buffer2), buffer1, val);
 		listBox->clear();
 		listBox->addItem(buffer2);
 	}

@@ -1380,10 +1380,10 @@ pp_int32 Tracker::handleEvent(PPObject* sender, PPEvent* event)
 				switch (container->getID())
 				{
 					case INSTRUMENT_CHOOSER_COPY:
-						sprintf(buffer, "Copy ins. %x to %x", listBoxSrcIns->getSelectedIndex()+1, listBoxDstIns->getSelectedIndex()+1);
+						snprintf(buffer, sizeof(buffer), "Copy ins. %x to %x", listBoxSrcIns->getSelectedIndex()+1, listBoxDstIns->getSelectedIndex()+1);
 						break;
 					case INSTRUMENT_CHOOSER_SWAP:
-						sprintf(buffer, "Swap ins. %x with %x", listBoxSrcSmp->getSelectedIndex()+1, listBoxDstSmp->getSelectedIndex()+1);
+						snprintf(buffer, sizeof(buffer), "Swap ins. %x with %x", listBoxSrcSmp->getSelectedIndex()+1, listBoxDstSmp->getSelectedIndex()+1);
 						break;
 				}
 
@@ -1435,13 +1435,13 @@ pp_int32 Tracker::handleEvent(PPObject* sender, PPEvent* event)
 				switch (container->getID())
 				{
 					case INSTRUMENT_CHOOSER_COPY:
-						sprintf(buffer, "Copy ins. %x to %x", listBoxSrc->getSelectedIndex()+1, listBoxDst->getSelectedIndex()+1);
+						snprintf(buffer, sizeof(buffer), "Copy ins. %x to %x", listBoxSrc->getSelectedIndex()+1, listBoxDst->getSelectedIndex()+1);
 						break;
 					case INSTRUMENT_CHOOSER_SWAP:
-						sprintf(buffer, "Swap ins. %x with %x", listBoxSrc->getSelectedIndex()+1, listBoxDst->getSelectedIndex()+1);
+						snprintf(buffer, sizeof(buffer), "Swap ins. %x with %x", listBoxSrc->getSelectedIndex()+1, listBoxDst->getSelectedIndex()+1);
 						break;
 					case MESSAGEBOX_INSREMAP:
-						sprintf(buffer, "Remap ins. %x to %x", listBoxSrc->getSelectedIndex()+1, listBoxDst->getSelectedIndex()+1);
+						snprintf(buffer, sizeof(buffer), "Remap ins. %x to %x", listBoxSrc->getSelectedIndex()+1, listBoxDst->getSelectedIndex()+1);
 						break;
 				}
 				
@@ -1463,10 +1463,10 @@ pp_int32 Tracker::handleEvent(PPObject* sender, PPEvent* event)
 				switch (container->getID())
 				{
 					case INSTRUMENT_CHOOSER_COPY:
-						sprintf(buffer, "Copy smp. %x to %x", listBoxSrc->getSelectedIndex(), listBoxDst->getSelectedIndex());
+						snprintf(buffer, sizeof(buffer), "Copy smp. %x to %x", listBoxSrc->getSelectedIndex(), listBoxDst->getSelectedIndex());
 						break;
 					case INSTRUMENT_CHOOSER_SWAP:
-						sprintf(buffer, "Swap smp. %x with %x", listBoxSrc->getSelectedIndex(), listBoxDst->getSelectedIndex());
+						snprintf(buffer, sizeof(buffer), "Swap smp. %x with %x", listBoxSrc->getSelectedIndex(), listBoxDst->getSelectedIndex());
 						break;
 				}
 				
@@ -2037,7 +2037,7 @@ bool Tracker::messageBoxEventListener(pp_int32 messageBoxID, pp_int32 messageBox
 					}
 					
 					char buffer[100];
-					sprintf(buffer, "%i Instruments have been remapped", res);
+					snprintf(buffer, sizeof(buffer), "%i Instruments have been remapped", res);
 					showMessageBox(MESSAGEBOX_UNIVERSAL, buffer, MessageBox_OK);
 					
 					screen->paint();

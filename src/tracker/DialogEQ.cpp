@@ -59,7 +59,7 @@ DialogEQ::DialogEQ(PPScreen* screen,
 	
 	char dummy[100];
 	
-	sprintf(dummy, "%i Band Equalizer" PPSTR_PERIODS, numSliders);
+	snprintf(dummy, sizeof(dummy), "%i Band Equalizer" PPSTR_PERIODS, numSliders);
 	
 	initDialog(screen, responder, id, dummy, 300, 230, 26, "Ok", "Cancel");
 
@@ -91,7 +91,7 @@ DialogEQ::DialogEQ(PPScreen* screen,
 		PPFont* font = PPFont::getFont(PPFont::FONT_TINY);
 		char dummy[100];
 		pp_int32 value = (pp_int32)values[i];
-		sprintf(dummy, value >= 1000 ? "%ik" : "%i", value >= 1000 ? value / 1000 : value);
+		snprintf(dummy, sizeof(dummy), value >= 1000 ? "%ik" : "%i", value >= 1000 ? value / 1000 : value);
 		PPStaticText* staticText = new PPStaticText(0, screen, this, PPPoint(x2 + (SCROLLBUTTONSIZE/2) - font->getStrWidth(dummy) / 2, y2 - 8), dummy, true);
 		staticText->setFont(font);
 		getMessageBoxContainer()->addControl(staticText);
@@ -123,7 +123,7 @@ DialogEQ::DialogEQ(PPScreen* screen,
 		PPFont* font = PPFont::getFont(PPFont::FONT_TINY);
 	
 		char dummy[100];
-		sprintf(dummy, j < 4 ? "+%i dB" : "%i dB", (8-j)*3 - 12);
+		snprintf(dummy, sizeof(dummy), j < 4 ? "+%i dB" : "%i dB", (8-j)*3 - 12);
 		PPStaticText* staticText = new PPStaticText(0, screen, this, PPPoint(x2 + font->getStrWidth("+12 dB") - font->getStrWidth(dummy), (pp_int32)y2f), dummy, true);
 		staticText->setFont(font);
 		getMessageBoxContainer()->addControl(staticText);

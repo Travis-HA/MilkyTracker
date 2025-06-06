@@ -1801,7 +1801,7 @@ void Tracker::initAdvEdit()
 
 	char buffer[100];
 
-	sprintf(buffer, "Remap ins. %x to %x", listBoxInstruments->getSelectedIndex()+1, 1);
+	snprintf(buffer, sizeof(buffer), "Remap ins. %x to %x", listBoxInstruments->getSelectedIndex()+1, 1);
 
 	//initInstrumentChooser(MESSAGEBOX_INSREMAP, "", "Instrument remapping", "",buffer, "",listBoxInstruments->getSelectedIndex());
 	// old instrument chooser / just inserted ;)

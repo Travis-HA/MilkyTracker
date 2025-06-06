@@ -481,7 +481,7 @@ void PatternEditorControl::paint(PPGraphicsAbstract* g)
 				}
 			}
 
-			sprintf(name, "%i", j+1);
+			snprintf(name, sizeof(name), "%i", j+1);
 
 			if (muteChannels[j])
 				strcat(name, " <Mute>");

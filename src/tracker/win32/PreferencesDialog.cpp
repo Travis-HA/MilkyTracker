@@ -258,9 +258,9 @@ void CPreferencesDialog::updateSliderVelocityAmplify()
 
 	TCHAR buffer[1024];
 #ifdef _UNICODE
-	wsprintf(buffer, _T("Record velocity (amplify: %i%%)"), m_dataBase->restore("VELOCITYAMPLIFY")->getIntValue());
+        wsprintf(buffer, _T("Record velocity (amplify: %i%%)"), m_dataBase->restore("VELOCITYAMPLIFY")->getIntValue());
 #else
-	sprintf(buffer, _T("Record velocity (amplify: %i%%)"), m_dataBase->restore("VELOCITYAMPLIFY")->getIntValue());
+        snprintf(buffer, sizeof(buffer), _T("Record velocity (amplify: %i%%)"), m_dataBase->restore("VELOCITYAMPLIFY")->getIntValue());
 #endif
 
 	SetWindowText(hWndToggle, buffer);
