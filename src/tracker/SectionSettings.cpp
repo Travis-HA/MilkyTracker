@@ -96,13 +96,13 @@ public:
 
 		char buffer[100];
 
-		sprintf(buffer, "R:%02X", getColor()->r);
+		snprintf(buffer, sizeof(buffer), "R:%02X", getColor()->r);
 		g->drawString(buffer, p.x, p.y, false);
 		p.y+=font->getCharHeight();
-		sprintf(buffer, "G:%02X", getColor()->g);
+		snprintf(buffer, sizeof(buffer), "G:%02X", getColor()->g);
 		g->drawString(buffer, p.x, p.y, false);
 		p.y+=font->getCharHeight();
-		sprintf(buffer, "B:%02X", getColor()->b);
+		snprintf(buffer, sizeof(buffer), "B:%02X", getColor()->b);
 		g->drawString(buffer, p.x, p.y, false);
 	}
 };
@@ -530,19 +530,19 @@ public:
 			if (fixed >= 100)
 			{
 				if (fixed >= 1000)
-					sprintf(buffer, "%i.%is(%i.%ik)", fixed / 1000, (fixed / 100) % 10, v / 1000, (v / 100) % 10);
+					snprintf(buffer, sizeof(buffer), "%i.%is(%i.%ik)", fixed / 1000, (fixed / 100) % 10, v / 1000, (v / 100) % 10);
 				else
-					sprintf(buffer, "%ims(%i.%ik)", fixed, v / 1000, (v / 100) % 10);
+					snprintf(buffer, sizeof(buffer), "%ims(%i.%ik)", fixed, v / 1000, (v / 100) % 10);
 			}
 			else
-				sprintf(buffer, "%i.%ims(%i.%ik)", fixed, decimal, v / 1000, (v / 100) % 10);
+				snprintf(buffer, sizeof(buffer), "%i.%ims(%i.%ik)", fixed, decimal, v / 1000, (v / 100) % 10);
 		}
 		else
 		{
 			if (fixed >= 1000)
-				sprintf(buffer, "%i.%is(%i)", fixed / 1000, (fixed / 100) % 10, v);
+				snprintf(buffer, sizeof(buffer), "%i.%is(%i)", fixed / 1000, (fixed / 100) % 10, v);
 			else
-				sprintf(buffer, "%i.%ims(%i)", fixed, decimal, v);
+				snprintf(buffer, sizeof(buffer), "%i.%ims(%i)", fixed, decimal, v);
 		}
 
 		if (strlen(buffer) < 9)
@@ -565,7 +565,7 @@ public:
 
 		v = settingsDatabase->restore("MIXERVOLUME")->getIntValue();
 
-		sprintf(buffer, "%i%%", (v*100)/256);
+		snprintf(buffer, sizeof(buffer), "%i%%", (v*100)/256);
 
 		if (strlen(buffer) < 4)
 		{
@@ -618,7 +618,7 @@ public:
 		for (j = 0; j < TrackerConfig::numMixFrequencies; j++)
 		{
 			char buffer[32];
-			sprintf(buffer, "%i Hz", TrackerConfig::mixFrequencies[j]);
+			snprintf(buffer, sizeof(buffer), "%i Hz", TrackerConfig::mixFrequencies[j]);
 			radioGroup->addItem(buffer);
 		}
 
@@ -742,7 +742,7 @@ public:
 		// buffersize
 		pp_int32 v = settingsDatabase->restore("VIRTUALCHANNELS")->getIntValue();
 
-		sprintf(buffer, "Use %02i", v);
+		snprintf(buffer, sizeof(buffer), "Use %02i", v);
 
 		text->setText(buffer);
 
@@ -829,8 +829,8 @@ public:
         PPDictionaryKey *k = settingsDatabase->restore("LIMITDRIVE");
         if( k != NULL ) v = k->getIntValue();
         char buffer[30];
-        if( v == 0 ) sprintf(buffer, "disabled");
-        else         sprintf(buffer, "Drive: +%i", v);
+        if( v == 0 ) snprintf(buffer, sizeof(buffer), "disabled");
+        else         snprintf(buffer, sizeof(buffer), "Drive: +%i", v);
         text->setText(buffer);
         slider->setCurrentValue(v);
 
@@ -940,7 +940,7 @@ public:
 
 		pp_int32 v = settingsDatabase->restore("SPACING")->getIntValue();
 		char buffer[100], buffer2[100];
-		sprintf(buffer,"%ipx", v);
+		snprintf(buffer, sizeof(buffer),"%ipx", v);
 		text->setText(buffer);
 		slider->setCurrentValue(v);
 
@@ -949,7 +949,7 @@ public:
 		slider = static_cast<PPSlider*>(container->getControlByID(SLIDER_MUTEFADE));
 
 		v = settingsDatabase->restore("MUTEFADE")->getIntValue();
-		sprintf(buffer, "%i%%", v);
+		snprintf(buffer, sizeof(buffer), "%i%%", v);
 		// right align
 		if (strlen(buffer) < 4)
 		{
@@ -963,13 +963,13 @@ public:
 		// update primary pattern row highlight
 		text = static_cast<PPStaticText*>(container->getControlByID(STATICTEXT_HIGHLIGHTMODULO1));
 		v = settingsDatabase->restore("HIGHLIGHTMODULO1")->getIntValue();
-		sprintf(buffer, "%02i ", v);
+		snprintf(buffer, sizeof(buffer), "%02i ", v);
 		text->setText(buffer);
 
 		// update secondary pattern row highlight
 		text = static_cast<PPStaticText*>(container->getControlByID(STATICTEXT_HIGHLIGHTMODULO2));
 		v = settingsDatabase->restore("HIGHLIGHTMODULO2")->getIntValue();
-		sprintf(buffer, "%02i ", v);
+		snprintf(buffer, sizeof(buffer), "%02i ", v);
 		text->setText(buffer);
 
 		v = settingsDatabase->restore("HIGHLIGHTROW1")->getIntValue();

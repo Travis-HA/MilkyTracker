@@ -450,12 +450,12 @@ void DialogResample::updateListBox(pp_int32 id, float val, pp_int32 numDecimals)
 	char buffer1[100];
 	char buffer2[100];
 
-	sprintf(buffer1, "%%.%if", numDecimals);
+	snprintf(buffer1, sizeof(buffer1), "%%.%if", numDecimals);
 
 	PPListBox* listBox = static_cast<PPListBox*>(messageBoxContainerGeneric->getControlByID(id));
 	if (listBox)
 	{
-		sprintf(buffer2, buffer1, val);
+		snprintf(buffer2, sizeof(buffer2), buffer1, val);
 		listBox->clear();
 		listBox->addItem(buffer2);
 	}

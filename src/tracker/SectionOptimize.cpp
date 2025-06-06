@@ -226,19 +226,19 @@ void SectionOptimize::optimize(bool evaluate/* = false*/)
 	if (removePatterns)
 	{
 		pp_int32 res = tracker.moduleEditor->removeUnusedPatterns(evaluate);
-		sprintf(buffer, "Unused patterns: %i", res);
+		snprintf(buffer, sizeof(buffer), "Unused patterns: %i", res);
 		listBox->addItem(buffer);
 	}
 	if (removeInstruments)
 	{
 		pp_int32 res = tracker.moduleEditor->removeUnusedInstruments(evaluate, remapInstruments);
-		sprintf(buffer, "Unused instruments: %i", res);
+		snprintf(buffer, sizeof(buffer), "Unused instruments: %i", res);
 		listBox->addItem(buffer);
 	}
 	if (removeSamples)
 	{
 		pp_int32 res = tracker.moduleEditor->removeUnusedSamples(evaluate);
-		sprintf(buffer, "Unused samples: %i", res);
+		snprintf(buffer, sizeof(buffer), "Unused samples: %i", res);
 		listBox->addItem(buffer);
 	}
 
@@ -248,13 +248,13 @@ void SectionOptimize::optimize(bool evaluate/* = false*/)
 		
 		if (minimizeSamples)
 		{
-			sprintf(buffer, "Minimized samples: %i", result.numMinimizedSamples);
+			snprintf(buffer, sizeof(buffer), "Minimized samples: %i", result.numMinimizedSamples);
 			listBox->addItem(buffer);
 		}
 
 		if (convertSamples)
 		{
-			sprintf(buffer, "Converted samples: %i", result.numConvertedSamples);
+			snprintf(buffer, sizeof(buffer), "Converted samples: %i", result.numConvertedSamples);
 			listBox->addItem(buffer);
 		}
 	}

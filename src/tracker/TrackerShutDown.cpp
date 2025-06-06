@@ -187,7 +187,7 @@ bool Tracker::shutDown()
 		// Optimizer
 		for (i = 0; i < (signed)SectionOptimize::getNumFlagGroups(); i++)
 		{
-			sprintf(buffer, "OPTIMIZER_%i",i);
+			snprintf(buffer, sizeof(buffer), "OPTIMIZER_%i",i);
 			settingsDatabase->store(buffer, sectionOptimize->getOptimizeCheckBoxFlags(i));
 		}
 
@@ -215,20 +215,20 @@ bool Tracker::shutDown()
 		// store predefined envelopes
 		for (i = 0; i < sectionInstruments->getNumPredefinedEnvelopes(); i++)
 		{
-			sprintf(buffer, "PREDEFENVELOPEVOLUME_%i",i);
+			snprintf(buffer, sizeof(buffer), "PREDEFENVELOPEVOLUME_%i",i);
 			settingsDatabase->store(buffer, sectionInstruments->getEncodedEnvelope(SectionInstruments::EnvelopeTypeVolume, i));
 		}
 
 		for (i = 0; i < sectionInstruments->getNumPredefinedEnvelopes(); i++)
 		{
-			sprintf(buffer, "PREDEFENVELOPEPANNING_%i",i);		
+			snprintf(buffer, sizeof(buffer), "PREDEFENVELOPEPANNING_%i",i);		
 			settingsDatabase->store(buffer, sectionInstruments->getEncodedEnvelope(SectionInstruments::EnvelopeTypePanning, i));
 		}
 
 		// store effect macros from pattern editor control
 		for (i = 0; i < NUMEFFECTMACROS; i++)
 		{
-			sprintf(buffer, "EFFECTMACRO_%i",i);
+			snprintf(buffer, sizeof(buffer), "EFFECTMACRO_%i",i);
 
 			pp_uint8 eff, op;
 			getPatternEditor()->getMacroOperands(i, eff, op);
@@ -240,7 +240,7 @@ bool Tracker::shutDown()
 
 		for (i = 0; i < sectionSettings->getNumPredefinedColorPalettes(); i++)
 		{
-			sprintf(buffer, "PREDEFCOLORPALETTE_%i",i);		
+			snprintf(buffer, sizeof(buffer), "PREDEFCOLORPALETTE_%i",i);		
 			settingsDatabase->store(buffer, sectionSettings->getEncodedPalette(i));
 		}
 

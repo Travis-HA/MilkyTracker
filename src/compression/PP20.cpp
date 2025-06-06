@@ -373,7 +373,7 @@ pp_int32 PP20::ppcrack(pp_uint8** destRef, pp_uint8 *data, pp_uint32 len)
 				ppDecrunch(temp, output, &data[6], len-14, outlen, data[len-1]);
 				
 				/* key_match = key */
-				/* sprintf(output_name, "%s.%08x", name, key); */
+				/* snprintf(output_name, sizeof(output_name), "%s.%08x", name, key); */
 				
 				savefile(fo, output, outlen);
 				break;

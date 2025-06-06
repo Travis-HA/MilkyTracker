@@ -336,16 +336,16 @@ void PPListBoxFileBrowser::appendFileSize(PPString& name, const PPPathEntry& ent
 		char buffer[1024];
 		
 		if (size < 1024)
-			sprintf(buffer, " (%db)", (pp_int32)size);
+			snprintf(buffer, sizeof(buffer), " (%db)", (pp_int32)size);
 		else if (size < 1024*1024)
 		{
 			size>>=10;
-			sprintf(buffer, " (%dkb)", (pp_int32)size);
+			snprintf(buffer, sizeof(buffer), " (%dkb)", (pp_int32)size);
 		}
 		else
 		{
 			size>>=20;
-			sprintf(buffer, " (%dmb)", (pp_int32)size);
+			snprintf(buffer, sizeof(buffer), " (%dmb)", (pp_int32)size);
 		}
 	
 		name.append(buffer);

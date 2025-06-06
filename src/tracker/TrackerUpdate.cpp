@@ -221,7 +221,7 @@ bool Tracker::updatePlayTime()
 	pp_int32 minutes = (playtime / 60) % 60;
 	pp_int32 hours = (playtime / 3600) % 100;
 
-	sprintf(buffer,"%02i:%02i:%02i", hours, minutes, seconds);
+	snprintf(buffer, sizeof(buffer),"%02i:%02i:%02i", hours, minutes, seconds);
 
 	playtime = moduleEditor->getModuleServices()->getEstimatedSongLength();
 	if (playtime == -1)
@@ -246,7 +246,7 @@ bool Tracker::updatePlayTime()
 		pp_int32 seconds = playtime % 60;
 		pp_int32 minutes = (playtime / 60) % 60;
 		pp_int32 hours = (playtime / 3600) % 100;
-		sprintf(buffer2,"(%02i:%02i:%02i)", hours, minutes, seconds);
+		snprintf(buffer2, sizeof(buffer2),"(%02i:%02i:%02i)", hours, minutes, seconds);
 	}
 	
 	strcat(buffer, buffer2);

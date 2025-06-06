@@ -1755,7 +1755,7 @@ void PatternEditorControl::updateStatus()
 		case 1: 
 		case 2: op = patternTools.getInstrument();
 				if( op > 0 ){
-					sprintf(label, op > 0 ? "%i" : "",op); 
+					snprintf(label, sizeof(label), op > 0 ? "%i" : "",op); 
 					status = label;
 				}
 				break;  // to vol-cmd
@@ -1788,56 +1788,56 @@ void PatternEditorControl::updateStatus()
 					op2 = patternTools.getNibble( op, PatternEditor::NibbleTypeLow );
 					patternTools.getEffectName( fxchar, eff);
 					if( eff != 0 ){
-						sprintf(label,"%i",op);
+						snprintf(label, sizeof(label),"%i",op);
 						status = PPString(label);
 
 						switch( fxchar[0] ){
-							case '0': sprintf(label,"semitone offset%c", param); break;
-							case '1': sprintf(label,"porta up speed");   break;
-							case '2': sprintf(label,"porta down speed"); break;
-							case '3': sprintf(label,"porta note speed"); break;
-							case '4': sprintf(label,"vibrato %s",        param == '1' ? "speed" : "depth" ); break;
-							case '5': sprintf(label,"portafade %s", param == '1' ? "up" : "down" ); break;
-							case '6': sprintf(label,"vibrafade %s", param == '1' ? "up" : "down" ); break;
-							case '7': sprintf(label,"tremolo  %s",       param == '1' ? "speed" : "depth" ); break;
-							case '8': sprintf(label,"pan 0=left ff=right");  break;
-							case '9': sprintf(label,"samplestart 0-FF"); break;
-							case 'A': sprintf(label,"fade speed %s",     isFX1 ? " " : param == '1' ? "up" : "down" ); break;
-							case 'B': sprintf(label,"song position");    break;
-							case 'C': sprintf(label,"note volume");      break;
-							case 'D': sprintf(label,"row next pattern"); break;
+							case '0': snprintf(label, sizeof(label),"semitone offset%c", param); break;
+							case '1': snprintf(label, sizeof(label),"porta up speed");   break;
+							case '2': snprintf(label, sizeof(label),"porta down speed"); break;
+							case '3': snprintf(label, sizeof(label),"porta note speed"); break;
+							case '4': snprintf(label, sizeof(label),"vibrato %s",        param == '1' ? "speed" : "depth" ); break;
+							case '5': snprintf(label, sizeof(label),"portafade %s", param == '1' ? "up" : "down" ); break;
+							case '6': snprintf(label, sizeof(label),"vibrafade %s", param == '1' ? "up" : "down" ); break;
+							case '7': snprintf(label, sizeof(label),"tremolo  %s",       param == '1' ? "speed" : "depth" ); break;
+							case '8': snprintf(label, sizeof(label),"pan 0=left ff=right");  break;
+							case '9': snprintf(label, sizeof(label),"samplestart 0-FF"); break;
+							case 'A': snprintf(label, sizeof(label),"fade speed %s",     isFX1 ? " " : param == '1' ? "up" : "down" ); break;
+							case 'B': snprintf(label, sizeof(label),"song position");    break;
+							case 'C': snprintf(label, sizeof(label),"note volume");      break;
+							case 'D': snprintf(label, sizeof(label),"row next pattern"); break;
 							case 'E': {
 										  switch( op1 ){
-											case 1: sprintf(label, param == '1' ? "fine porta up" : "fporta speed"); break;
-											case 2: sprintf(label, param == '1' ? "fine porta down" : "fporta speed"); break;
-											case 3: sprintf(label, param == '1' ? "glissando" : "not supported"); break;
-											case 4: sprintf(label, param == '1' ? "vibrato control" : "not supported"); break;
-											case 5: sprintf(label, param == '1' ? "note fine-tune" : "fine-tune value"); break;
-											case 6: sprintf(label, param == '1' ? "pattern loop" : "pattern loop start=0 / times"); break;
-											case 7: sprintf(label, param == '1' ? "tremolo control" : "not supported"); break;
-											case 8: sprintf(label, param == '1' ? "note pan pos" : "dont use this"); break;
-											case 9: sprintf(label, param == '1' ? "retrigger note" : "retrigger interval"); break;
-											case 10: sprintf(label, param == '1' ? "fine fade up" : "finefade speed"); break;
-											case 11: sprintf(label, param == '1' ? "fine fade down" : "finefade speed"); break;
-											case 12: sprintf(label, param == '1' ? "note cut" : "note cut tick number"); break;
-											case 13: sprintf(label, param == '1' ? "note delay" : "note cut tick number"); break;
-											case 14: sprintf(label, param == '1' ? "pattern delay" : "pattern delay rows"); break;
-											default: sprintf(label,"not supported"); break;
+											case 1: snprintf(label, sizeof(label), param == '1' ? "fine porta up" : "fporta speed"); break;
+											case 2: snprintf(label, sizeof(label), param == '1' ? "fine porta down" : "fporta speed"); break;
+											case 3: snprintf(label, sizeof(label), param == '1' ? "glissando" : "not supported"); break;
+											case 4: snprintf(label, sizeof(label), param == '1' ? "vibrato control" : "not supported"); break;
+											case 5: snprintf(label, sizeof(label), param == '1' ? "note fine-tune" : "fine-tune value"); break;
+											case 6: snprintf(label, sizeof(label), param == '1' ? "pattern loop" : "pattern loop start=0 / times"); break;
+											case 7: snprintf(label, sizeof(label), param == '1' ? "tremolo control" : "not supported"); break;
+											case 8: snprintf(label, sizeof(label), param == '1' ? "note pan pos" : "dont use this"); break;
+											case 9: snprintf(label, sizeof(label), param == '1' ? "retrigger note" : "retrigger interval"); break;
+											case 10: snprintf(label, sizeof(label), param == '1' ? "fine fade up" : "finefade speed"); break;
+											case 11: snprintf(label, sizeof(label), param == '1' ? "fine fade down" : "finefade speed"); break;
+											case 12: snprintf(label, sizeof(label), param == '1' ? "note cut" : "note cut tick number"); break;
+											case 13: snprintf(label, sizeof(label), param == '1' ? "note delay" : "note cut tick number"); break;
+											case 14: snprintf(label, sizeof(label), param == '1' ? "pattern delay" : "pattern delay rows"); break;
+											default: snprintf(label, sizeof(label),"not supported"); break;
 										  }
 										  break;
 									  }
-							case 'F': sprintf(label,"spd < 20 > bpm"); break;
-							case 'G': sprintf(label,"global volume"); break;
-							case 'H': sprintf(label,"global fade %s", param == '1' ? "up" : "down"); break;
-							case 'L': sprintf(label,"envelope tick"); break;
-							case 'P': sprintf(label,"pan speed %s", isFX1 ? " " : param == '1' ? "R" : "L"); break;
-							case 'R': sprintf(label,"%s", param == '1' ? "retrig volfade speed" : "retrigger interval"); break;
-							case 'T': sprintf(label,"%s", param == '1' ? "tremor ticks on" : "tremor ticks off"); break;
+							case 'F': snprintf(label, sizeof(label),"spd < 20 > bpm"); break;
+							case 'G': snprintf(label, sizeof(label),"global volume"); break;
+							case 'H': snprintf(label, sizeof(label),"global fade %s", param == '1' ? "up" : "down"); break;
+							case 'L': snprintf(label, sizeof(label),"envelope tick"); break;
+							case 'P': snprintf(label, sizeof(label),"pan speed %s", isFX1 ? " " : param == '1' ? "R" : "L"); break;
+							case 'R': snprintf(label, sizeof(label),"%s", param == '1' ? "retrig volfade speed" : "retrigger interval"); break;
+							case 'T': snprintf(label, sizeof(label),"%s", param == '1' ? "tremor ticks on" : "tremor ticks off"); break;
 							case 'X': {
 										  switch( op1 ){
-											case 1: sprintf(label,"%s", param == '1' ? "xfine porta up" : "speed"); break;
-											case 2: sprintf(label,"%s", param == '1' ? "xfine porta down" : "speed"); break;
-											default: sprintf(label,"not supported"); break;
+											case 1: snprintf(label, sizeof(label),"%s", param == '1' ? "xfine porta up" : "speed"); break;
+											case 2: snprintf(label, sizeof(label),"%s", param == '1' ? "xfine porta down" : "speed"); break;
+											default: snprintf(label, sizeof(label),"not supported"); break;
 										  }
 										  break;
 									  }

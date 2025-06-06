@@ -126,7 +126,7 @@ pp_int32 ModuleServices::exportToWAV(const PPSystemString& fileName, WAVWriterPa
 			PPSystemString fileName = baseName;
 			
 			char infix[80];
-			sprintf(infix, "_%02d", i+1);
+			snprintf(infix, sizeof(infix), "_%02d", i+1);
 			
 			fileName.append(infix);
 			fileName.append(extension);

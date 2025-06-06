@@ -139,7 +139,7 @@ void DialogPanning::init()
 		slider->setBarSize(16384);
 		messageBoxContainerGeneric->addControl(slider);
 
-		sprintf(buffer, "Ch:%02d L         R", i+1);
+		snprintf(buffer, sizeof(buffer), "Ch:%02d L         R", i+1);
 		messageBoxContainerGeneric->addControl(new PPStaticText(0, NULL, NULL, PPPoint(x + 4, y2), buffer, true));
 
 		y2+=12;
@@ -155,7 +155,7 @@ void DialogPanning::init()
 		slider->setBarSize(16384);
 		messageBoxContainerGeneric->addControl(slider);
 
-		sprintf(buffer, "Ch:%02d L         R", i+1+(maxChannels/2));
+		snprintf(buffer, sizeof(buffer), "Ch:%02d L         R", i+1+(maxChannels/2));
 		messageBoxContainerGeneric->addControl(new PPStaticText(0, NULL, NULL, PPPoint(x2 + 4, y2), buffer, true));
 
 		y2+=12;

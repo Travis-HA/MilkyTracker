@@ -100,7 +100,7 @@ void Tracker::buildDefaultSettings()
 	// ---------- Optimize --------
 	for (i = 0; i < (signed)SectionOptimize::getNumFlagGroups(); i++)
 	{
-		sprintf(buffer, "OPTIMIZER_%i",i);
+		snprintf(buffer, sizeof(buffer), "OPTIMIZER_%i",i);
 		settingsDatabase->store(buffer, SectionOptimize::getDefaultFlags(i));
 	}
 
@@ -236,14 +236,14 @@ void Tracker::buildDefaultSettings()
 	// Store volume envelopes
 	for (i = 0; i < TrackerConfig::numPredefinedEnvelopes; i++)
 	{
-		sprintf(buffer, "PREDEFENVELOPEVOLUME_%i",i);
+		snprintf(buffer, sizeof(buffer), "PREDEFENVELOPEVOLUME_%i",i);
 		settingsDatabase->store(buffer, TrackerConfig::defaultPredefinedVolumeEnvelope);
 	}
 
 	// Store panning envelopes
 	for (i = 0; i < TrackerConfig::numPredefinedEnvelopes; i++)
 	{
-		sprintf(buffer, "PREDEFENVELOPEPANNING_%i",i);
+		snprintf(buffer, sizeof(buffer), "PREDEFENVELOPEPANNING_%i",i);
 		settingsDatabase->store(buffer, TrackerConfig::defaultPredefinedPanningEnvelope);
 	}
 
@@ -257,14 +257,14 @@ void Tracker::buildDefaultSettings()
 
 	for (i = 0; i < NUMEFFECTMACROS; i++)
 	{
-		sprintf(buffer, "EFFECTMACRO_%i",i);
+		snprintf(buffer, sizeof(buffer), "EFFECTMACRO_%i",i);
 		settingsDatabase->store(buffer, 0);
 	}
 
 	// store predefined colorsets
 	for (i = 0; i < TrackerConfig::numPredefinedColorPalettes; i++)
 	{
-		sprintf(buffer, "PREDEFCOLORPALETTE_%i",i);
+		snprintf(buffer, sizeof(buffer), "PREDEFCOLORPALETTE_%i",i);
 		settingsDatabase->store(buffer, TrackerConfig::predefinedColorPalettes[i]);
 	}
 

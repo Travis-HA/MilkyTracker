@@ -303,14 +303,14 @@ void DialogQuickChooseInstrument::fitListBox(pp_int32 id, pp_int32 valueOneRange
 	char buffer1[100];
 	char buffer2[100];
 
-	sprintf(buffer1, "%%x");
+	snprintf(buffer1, sizeof(buffer1), "%%x");
 
 	PPListBox* listBox = static_cast<PPListBox*>(messageBoxContainerGeneric->getControlByID(id));
 	if (listBox)
 	{
-		sprintf(buffer2, buffer1, valueRangeStart);
+		snprintf(buffer2, sizeof(buffer2), buffer1, valueRangeStart);
 		pp_int32 len = (pp_int32)strlen(buffer2)+1;
-		sprintf(buffer2, buffer1,  valueRangeEnd);
+		snprintf(buffer2, sizeof(buffer2), buffer1,  valueRangeEnd);
 		if ((pp_int32)strlen(buffer2)+1 > len) len = (pp_int32)strlen(buffer2)+1;
 		
 		pp_int32 y2 = listBox->getLocation().y;
@@ -343,12 +343,12 @@ void DialogQuickChooseInstrument::updateListBox(pp_int32 id, pp_int32 val)
 	char buffer1[100];
 	char buffer2[100];
 
-	sprintf(buffer1, "%%x");
+	snprintf(buffer1, sizeof(buffer1), "%%x");
 
 	PPListBox* listBox = static_cast<PPListBox*>(messageBoxContainerGeneric->getControlByID(id));
 	if (listBox)
 	{
-		sprintf(buffer2, buffer1, val);
+		snprintf(buffer2, sizeof(buffer2), buffer1, val);
 		listBox->clear();
 		listBox->addItem(buffer2);
 	}

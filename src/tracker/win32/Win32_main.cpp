@@ -468,9 +468,9 @@ static LONG WINAPI CrashHandler(EXCEPTION_POINTERS*)
 	{
 		_tcscpy(buffer, szPath);
 #ifdef _UNICODE
-		wsprintf(fileName, L"BACKUP%02i.XM", num);
+                wsprintf(fileName, L"BACKUP%02i.XM", num);
 #else
-		sprintf(fileName, "BACKUP%02i.XM", num);
+                snprintf(fileName, sizeof(fileName), "BACKUP%02i.XM", num);
 #endif
 		_tcscat(buffer, fileName);
 		num++;

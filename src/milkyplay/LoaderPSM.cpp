@@ -253,7 +253,7 @@ mp_sint32 LoaderPSMv2::load(XMFileBase& f, XModule* module)
 						else
 						{
 							char patSig[10];
-							sprintf(patSig, "P%i  ", patIndex % 999);
+							snprintf(patSig, sizeof(patSig), "P%i  ", patIndex % 999);
 						
 							patterns[patIndex] = new mp_ubyte[20];
 							memset(patterns[patIndex],0,20);

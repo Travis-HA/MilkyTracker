@@ -407,7 +407,7 @@ pp_int32 SectionTranspose::handleEvent(PPObject* sender, PPEvent* event)
 				}
 				
 				//char buffer[100];
-				//sprintf(buffer, "%i Notes have been transposed", res);
+				//snprintf(buffer, sizeof(buffer), "%i Notes have been transposed", res);
 				//tracker.showMessageBox(MESSAGEBOX_UNIVERSAL, buffer, Tracker::MessageBox_OK);
 				
 				tracker.screen->paint();
@@ -808,7 +808,7 @@ void SectionTranspose::update(bool repaint/* = true*/)
 
 	text = static_cast<PPStaticText*>(container->getControlByID(TRANSPOSE_TEXT_AMOUNT));
 	
-	sprintf(buffer, "%i", currentTransposeAmount);
+	snprintf(buffer, sizeof(buffer), "%i", currentTransposeAmount);
 
 	text->setText(buffer);
 
@@ -827,7 +827,7 @@ void SectionTranspose::handleTransposeSong()
 	else
 	{
 		char buffer[100];
-		sprintf(buffer, "%i notes will be erased, continue?", fuckups);
+		snprintf(buffer, sizeof(buffer), "%i notes will be erased, continue?", fuckups);
 		showMessageBox(MESSAGEBOX_TRANSPOSEPROCEED, buffer);
 	}
 }

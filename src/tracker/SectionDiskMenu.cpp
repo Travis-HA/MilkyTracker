@@ -818,7 +818,7 @@ void SectionDiskMenu::init(pp_int32 px, pp_int32 py)
 	{
 		pp_int32 buttonHeight = 11;
 		char temp[80];
-		sprintf(temp, "DIR%d", i+1);
+		snprintf(temp, sizeof(temp), "DIR%d", i+1);
 		PPFont* font = PPFont::getFont(PPFont::FONT_TINY);
 		button = new PPButton(DISKMENU_CLASSIC_BUTTON_DIR0+i, screen, this, PPPoint(x5, y5), PPSize(buttonWidth, buttonHeight));
 		button->setFont(font);
@@ -1929,7 +1929,7 @@ PPString SectionDiskMenu::getKeyFromPredefPathButton(PPControl* button)
 	
 		char result[1024];
 		
-		sprintf(result, "%s_%d", keys[classicViewState], id);
+		snprintf(result, sizeof(result), "%s_%d", keys[classicViewState], id);
 		
 		return PPString(result);
 	}
